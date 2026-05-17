@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f8faf8;
+    color: #191c1b;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #bec9c2; border-radius: 99px; }
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    user-select: none;
+  }
+  .ms-filled {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-surface-container-lowest rounded-3xl p-6 shadow-card border border-emerald-900/5;
+  }
+  .card-sm {
+    @apply bg-surface-container-lowest rounded-2xl p-4 shadow-card border border-emerald-900/5;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full bg-surface-container-low border-2 border-transparent rounded-xl px-4 py-3 text-sm text-on-surface outline-none
+    transition-all duration-200 placeholder:text-outline
+    focus:bg-white focus:border-on-primary-container focus:shadow-glow;
+  }
+  .input-label {
+    @apply block text-[11px] font-bold tracking-widest uppercase text-on-surface-variant mb-1.5;
+  }
+  select.input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236f7973' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 38px;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-primary text-white rounded-xl px-6 py-3 text-sm font-semibold
+    transition-all duration-200 hover:bg-primary-container hover:scale-[1.02] hover:shadow-float
+    active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100
+    flex items-center justify-center gap-2;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-primary border-2 border-primary rounded-xl px-5 py-[10px] text-sm font-semibold
+    transition-all duration-200 hover:bg-emerald-50 hover:scale-[1.02]
+    active:scale-[0.98] flex items-center justify-center gap-2;
+  }
+  .btn-danger {
+    @apply bg-transparent text-error border-2 border-error/30 rounded-xl px-5 py-[10px] text-sm font-semibold
+    transition-all duration-200 hover:bg-red-50 flex items-center justify-center gap-2;
+  }
+
+  /* Sidebar nav link */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-outline
+    transition-all duration-200 cursor-pointer hover:bg-emerald-50 hover:text-primary;
+  }
+  .nav-item.active {
+    @apply bg-emerald-50 text-primary font-semibold;
+  }
+
+  /* Status tags */
+  .tag { @apply text-[11px] font-bold px-2.5 py-0.5 rounded-full; }
+  .tag-optimal { @apply bg-emerald-100 text-primary; }
+  .tag-low { @apply bg-amber-100 text-amber-800; }
+  .tag-high { @apply bg-red-100 text-red-800; }
+
+  /* Score bar */
+  .score-bar-track { @apply h-1.5 rounded-full bg-surface-container-high overflow-hidden; }
+  .score-bar-fill { @apply h-full rounded-full transition-all duration-700; }
+
+  /* Animations with stagger */
+  .animate-fade-in { animation: fadeIn 0.45s ease both; }
+  .animate-slide-up { animation: slideUp 0.4s ease both; }
+  .delay-50 { animation-delay: 50ms; }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-250 { animation-delay: 250ms; }
+  .delay-300 { animation-delay: 300ms; }
+
+  /* Glass */
+  .glass {
+    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(6,95,70,0.07);
+  }
+
+  /* Notification toast */
+  .toast {
+    @apply fixed bottom-6 right-6 z-[9999] flex items-center gap-3
+    px-5 py-4 rounded-2xl text-sm font-medium text-white shadow-float
+    max-w-sm transition-all duration-500;
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply flex flex-col items-center justify-center text-center py-16 px-8 gap-3;
+  }
+
+  /* Meal type chip */
+  .meal-chip {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold
+    cursor-pointer transition-all duration-150 border border-transparent;
+  }
+  .meal-chip.active {
+    @apply bg-primary text-white;
+  }
+  .meal-chip:not(.active) {
+    @apply bg-surface-container text-secondary border-outline-variant/50 hover:border-primary/30;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
