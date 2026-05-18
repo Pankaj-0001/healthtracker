@@ -161,8 +161,8 @@ export default function WeeklyReportPage() {
         <div className="card">
           <EmptyState
             icon="calendar_month"
-            title="No records in this range"
-            description={`No meals logged between ${new Date(startDate).toLocaleDateString('en-IN', { month:'short', day:'numeric' })} – ${new Date(endDate).toLocaleDateString('en-IN', { month:'short', day:'numeric' })}. Try a different range.`}
+            title="Not enough records in this range"
+            description={`Not enough meal record logged between ${new Date(startDate).toLocaleDateString('en-IN', { month:'short', day:'numeric' })} – ${new Date(endDate).toLocaleDateString('en-IN', { month:'short', day:'numeric' })}. Try a different range.`}
             action={
               <button className="btn-primary mt-4 px-8 py-3 text-sm" onClick={() => navigate('/log')}>
                 Log Meals
