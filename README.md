@@ -45,7 +45,7 @@ npm run preview
 
 ## Backend API
 
-The Vite dev server proxies `/api` → `http://localhost:8080` automatically.
+The Vite dev server proxies `/api` → `[https://healthtrackar.netlify.app/]` automatically.
 
 For production, update `vite.config.js` proxy target or set `VITE_API_BASE` env variable.
 
@@ -61,7 +61,3 @@ For production, update `vite.config.js` proxy target or set `VITE_API_BASE` env 
 | GET | `/api/diet/weekly-report` | Get weekly report |
 | GET | `/api/food/search?q=` | Search food items |
 
-## Notes
-- Sleep section is intentionally excluded per requirements
-- JWT token stored in `localStorage` under key `ht_token`
-- Auto-logout on 401 response
