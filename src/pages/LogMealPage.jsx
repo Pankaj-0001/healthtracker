@@ -77,7 +77,7 @@ function AddFoodModal({ mealType, onAdd, onClose }) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md bg-white rounded-3xl overflow-hidden animate-slide-up"
+        className="w-full max-w-md bg-white rounded-3xl animate-slide-up max-h-[90vh] overflow-y-auto"
         style={{ boxShadow: '0 24px 64px rgba(0,0,0,0.22)' }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -120,7 +120,7 @@ function AddFoodModal({ mealType, onAdd, onClose }) {
                   />
                 </div>
                 {suggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 z-20 mt-1 bg-white rounded-2xl overflow-hidden"
+                  <div className="absolute top-full left-0 right-0 z-20 mt-1 bg-white rounded-2xl overflow-y-auto max-h-60"
                     style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.12)', border: '1px solid rgba(6,95,70,0.08)' }}>
                     {suggestions.map((f) => (
                       <button key={f.id} type="button" onClick={() => pickSuggestion(f.name)}
