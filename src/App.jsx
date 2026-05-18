@@ -4,7 +4,7 @@ import { ToastProvider } from './context/ToastContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import AppLayout from './components/AppLayout';
 
-import LandingPage from './pages/Landingpage';
+import {LandingPage} from './pages/Landingpage';
 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
