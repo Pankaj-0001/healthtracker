@@ -41,7 +41,6 @@ export default function WeeklyReportPage() {
   const [fetched,   setFetched]   = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => { fetchReport(defStart, defEnd); }, []);
 
   async function fetchReport(start, end) {
     setLoading(true);
@@ -57,9 +56,26 @@ export default function WeeklyReportPage() {
   }
 
   function handleApply() {
-    if (!startDate || !endDate || new Date(startDate) > new Date(endDate)) return;
-    fetchReport(startDate, endDate);
+
+  if (!startDate || !endDate) return;
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  if (start > end) return;
+
+  const diffDays =
+    Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+  // Only minimum validation
+  if (diffDays < 7) {
+
+    alert('Minimum 7 days required');
+    return;
   }
+
+  fetchReport(startDate, endDate);
+}
 
   const hasData = report?.dailyProgress?.length > 0;
 
