@@ -117,7 +117,7 @@ export default function WeeklyReportPage() {
           {[
             { label: 'Last 7 days',  days: 7  },
             { label: 'Last 14 days', days: 14 },
-            { label: 'Last 30 days', days: 30 },
+            { label: 'Last 21 days', days: 21 },
           ].map((r) => {
             const s = toInputDate(new Date(today.getFullYear(), today.getMonth(), today.getDate() - (r.days - 1)));
             const isActive = startDate === s && endDate === defEnd;
