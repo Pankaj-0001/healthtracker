@@ -3,7 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import AppLayout from './components/AppLayout';
-
+import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import CompleteProfilePage from './pages/CompleteProfilePage';
@@ -20,9 +20,10 @@ export default function App() {
       <AuthProvider>
         <ToastProvider>
           <Routes>
-            {/* Public */}
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+           {/* Public */}
+              <Route path="/"        element={<LandingPage />} />
+              <Route path="/login"   element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
 
             {/* Semi-protected: logged in but profile incomplete (Google OAuth new users) */}
             <Route

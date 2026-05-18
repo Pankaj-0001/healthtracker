@@ -123,8 +123,20 @@ export default function WeeklyReportPage() {
 
       {/* Loading spinner */}
       {loading && (
-        <div className="flex items-center justify-center py-16">
-          <div style={{ width:40, height:40, border:'3px solid rgba(0,69,50,0.1)', borderTopColor:'#004532', borderRadius:'50%', animation:'spin 0.75s linear infinite' }} />
+        <div className="flex flex-col items-center justify-center py-24 animate-fade-in">
+          <div className="relative mb-6">
+            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+            <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-900/10 flex items-center justify-center relative shadow-sm">
+              <span className="material-symbols-outlined text-primary text-3xl animate-pulse">
+                auto_awesome
+              </span>
+            </div>
+          </div>
+          <h3 className="text-xl font-serif text-primary mb-2">Analyzing Nutrition Data</h3>
+          <div className="flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase text-outline">
+            <div style={{ width:12, height:12, border:'2px solid rgba(0,69,50,0.1)', borderTopColor:'#004532', borderRadius:'50%', animation:'spin 0.75s linear infinite' }} />
+            <span>AI is generating your report...</span>
+          </div>
         </div>
       )}
 
@@ -224,10 +236,31 @@ export default function WeeklyReportPage() {
                     AI Health Insights
                   </p>
 
-                  <div className="prose prose-sm max-w-none text-on-surface leading-relaxed">
-                    <ReactMarkdown>
-                      {report.insights}
-                    </ReactMarkdown>
+                  <div className="flex flex-col gap-3">
+                    {report.insights
+                      .split(/\n+/)
+                      .filter((p) => p.trim())
+                      .map((point, index) => {
+                        const cleanPoint = point.trim().replace(/^[-*]\s+/, '');
+                        return (
+                          <div 
+                            key={index} 
+                            className="flex gap-3.5 items-start p-4 bg-white/60 rounded-2xl border border-emerald-900/5 shadow-sm transition-all hover:shadow-md hover:bg-white/80"
+                          >
+                            <span 
+                              className="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" 
+                              style={{ fontSize: 20 }}
+                            >
+                              check_circle
+                            </span>
+                            <div className="prose prose-sm max-w-none text-on-surface leading-relaxed [&>p]:m-0">
+                              <ReactMarkdown>
+                                {cleanPoint}
+                              </ReactMarkdown>
+                            </div>
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               </div>
